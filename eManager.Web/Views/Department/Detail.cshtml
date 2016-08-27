@@ -1,0 +1,34 @@
+﻿@model eManager.Domain.Department
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>@Model.Name</h2>
+
+<hr />
+
+@Html.ActionLink("Add employee", "Create", "Employee", new { DepartmentId = Model.Id }, null)
+
+<hr />
+
+@if (Model.Employees == null || Model.Employees.Count() == 0)
+{
+    <div>Sorry, we don't have any employee in this depatment yet!</div>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.Name</td>
+            </tr>
+        }
+    </table>
+}
